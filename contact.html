@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | J. Batchelor Realty</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">J. Batchelor Realty</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listings.html">Listings</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-heading">Get in Touch</h2>
+            <p class="section-subheading">Questions about a listing, or thinking about buying or selling? Reach out.</p>
+
+            <div class="contact-layout">
+                <!-- NOTE: this form has no backend yet — submitting it
+                     won't actually send anything. Wiring a form up to
+                     send real email/data is a good "next lesson" once
+                     you're comfortable with HTML/CSS. -->
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+
+                <div class="office-info">
+                    <h3>Office</h3>
+                    <p>Mesa, Arizona</p>
+                    <p>Serving the Phoenix metro area</p>
+                    <h3 style="margin-top: 24px;">Hours</h3>
+                    <p>Mon–Fri: 9am – 6pm</p>
+                    <p>Sat: 10am – 3pm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 J. Batchelor Realty. Phoenix, Arizona.
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

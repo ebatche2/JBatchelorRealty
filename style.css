@@ -1,0 +1,356 @@
+/* =========================================================
+   1. DESIGN TOKENS
+   CSS variables let us define our palette/spacing ONCE and
+   reuse it everywhere. Change a value here, it updates the
+   whole site. Try changing --color-accent later and watch
+   what happens.
+   ========================================================= */
+:root {
+    --color-navy: #16324F;      /* headers, nav, primary text on light bg */
+    --color-navy-dark: #0E2238; /* footer background, hover states */
+    --color-accent: #fff;    /* gold — buttons, links, highlights */
+    --color-bg: #F8F7F4;        /* page background, warm off-white */
+    --color-card: #FFFFFF;
+    --color-text: #26313A;      /* body text */
+    --color-text-muted: #5B6B79;
+
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --max-width: 1100px;
+    --radius: 6px;
+}
+
+/* =========================================================
+   2. RESET
+   Every browser has different default spacing on things like
+   <h1> and <ul>. This zeroes it out so we control it on
+   purpose instead of guessing.
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* padding/border no longer add to an element's width */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;   /* centers the content block on the page */
+    padding: 0 24px;
+}
+
+/* =========================================================
+   3. NAVIGATION
+   Flexbox is built for exactly this: a row of items that
+   need to line up and space themselves out automatically.
+   ========================================================= */
+.navbar {
+    background-color: var(--color-navy);
+    padding: 18px 0;
+
+    /* THE KEY LINE: position: sticky keeps this element in normal
+       document flow (unlike position: fixed) UNTIL the page scrolls
+       past it, then it "sticks" to `top: 0`. That's what keeps
+       "J. Batchelor Realty" visible no matter how far someone
+       scrolls down the page. */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* stays above cards, images, everything else */
+    transition: box-shadow 0.2s ease;
+}
+
+/* Added by script.js once the page has scrolled a bit, so the
+   sticky bar visually separates itself from the content under it */
+.navbar.scrolled {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between; /* logo left, links right */
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--color-accent);
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile below.
+   It's a real <button>, not a <div>, so it's keyboard-focusable
+   and screen-reader friendly for free. */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* =========================================================
+   4. HERO
+   background-size: cover fills the box without distorting
+   the image; background-position: center keeps the
+   interesting part of the photo visible on any screen size.
+   ========================================================= */
+.hero {
+    background-image: linear-gradient(rgba(14, 34, 56, 0.55), rgba(14, 34, 56, 0.55)), url('phoenix.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 140px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 2.75rem;
+    margin-bottom: 16px;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: #E8E8E6;
+    max-width: 560px;
+    margin: 0 auto 32px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-navy-dark);
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   5. SECTIONS & CARDS
+   CSS Grid handles the 2-dimensional layout (rows AND
+   columns) that property cards need — Flexbox is better
+   suited to single-row/single-column layouts like the nav.
+   ========================================================= */
+.section {
+    padding: 80px 0;
+}
+
+.section-heading {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 12px;
+    color: var(--color-navy);
+}
+
+.section-subheading {
+    text-align: center;
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin: 0 auto 48px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 28px;
+}
+
+.card {
+    background-color: var(--color-card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(22, 50, 79, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 24px rgba(22, 50, 79, 0.15);
+}
+
+.card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-price {
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-address {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-meta {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   6. CONTACT FORM
+   ========================================================= */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #D6D9DC;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.office-info h3 {
+    font-family: var(--font-heading);
+    color: var(--color-navy);
+    margin-bottom: 12px;
+}
+
+.office-info p {
+    margin-bottom: 8px;
+    color: var(--color-text-muted);
+}
+
+/* =========================================================
+   7. FOOTER
+   ========================================================= */
+footer {
+    background-color: var(--color-navy-dark);
+    color: #B7C0C8;
+    text-align: center;
+    padding: 32px 0;
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   8. RESPONSIVE
+   Below 700px (most phones), stack things into a single
+   column instead of squeezing 3 across.
+   ========================================================= */
+@media (max-width: 700px) {
+    .navbar .container {
+        flex-direction: row; /* keep logo + toggle on one line */
+    }
+
+    .nav-toggle {
+        display: block; /* show the hamburger only on small screens */
+    }
+
+    .nav-links {
+        display: none; /* hidden until script.js toggles .open */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        padding: 16px 24px;
+        gap: 16px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .hero {
+        padding: 90px 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+}

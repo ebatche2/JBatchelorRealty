@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Metadata: describes the page, doesn't render on screen -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J. Batchelor Realty | Phoenix, AZ</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: loads the two typefaces our CSS refers to -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAV: same markup will be copied onto every page.
+         In plain HTML there's no built-in way to "include" a
+         shared header — that's what tools like React or a
+         static site generator solve later on. -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">J. Batchelor Realty</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="listings.html">Listings</a></li>
+                <li><a href="rentals.html">Rentals</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            <h1>Find Your Place in Phoenix</h1>
+            <p>Local expertise, straightforward advice, and listings across the Valley — from Mesa to Scottsdale.</p>
+            <a href="listings.html" class="btn">View Listings</a>
+        </div>
+    </header>
+
+    <!-- FEATURED LISTINGS PREVIEW -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-heading">Featured Homes</h2>
+            <p class="section-subheading">A few of our current listings around the Valley.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=500" alt="Single-story desert home with a tile roof">
+                    <div class="card-body">
+                        <div class="card-price">$425,000</div>
+                        <div class="card-address">1420 E Desert Willow Rd, Mesa</div>
+                        <div class="card-meta">3 bed · 2 bath · 1,850 sqft</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500" alt="Modern two-story home with a pool">
+                    <div class="card-body">
+                        <div class="card-price">$610,000</div>
+                        <div class="card-address">78 N Camelback Ave, Phoenix</div>
+                        <div class="card-meta">4 bed · 3 bath · 2,600 sqft</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=500" alt="Ranch-style home with a landscaped front yard">
+                    <div class="card-body">
+                        <div class="card-price">$349,900</div>
+                        <div class="card-address">902 S Val Vista Dr, Gilbert</div>
+                        <div class="card-meta">3 bed · 2 bath · 1,600 sqft</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 J. Batchelor Realty. Phoenix, Arizona.
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
