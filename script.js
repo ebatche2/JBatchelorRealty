@@ -74,11 +74,33 @@ function initMobileMenu() {
    — this is the same event.preventDefault() pattern you'll use
    later once the form does talk to a real server.
    --------------------------------------------------------- */
-    
+    function initContactForm() {
+        const form = document.querySelector('form');
+        if (!form) return;
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {'Accept': 'application/json'}
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = 'thanks.html';
+                } else {
+                    alert('Error: Please try again.');
+                }
+            })
+        })
+    }
 
 
 /* Run everything */
 highlightCurrentPage();
 initNavbarShadow();
 initMobileMenu();
-
+initContactForm();
