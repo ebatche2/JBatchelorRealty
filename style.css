@@ -354,3 +354,10 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.about-photo {
+    width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
