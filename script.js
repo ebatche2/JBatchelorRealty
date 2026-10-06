@@ -74,30 +74,11 @@ function initMobileMenu() {
    — this is the same event.preventDefault() pattern you'll use
    later once the form does talk to a real server.
    --------------------------------------------------------- */
-function initContactForm() {
-    const form = document.querySelector('form');
-    if (!form) return; // only exists on contact.html, this just skips elsewhere
+    
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // stops the browser's default "reload the page" submit
-
-        const name = document.getElementById('name').value;
-
-        // Simple check — real validation happens on a server too,
-        // this is just a friendlier front-end message.
-        if (name.trim() === '') {
-            alert('Please enter your name.');
-            return;
-        }
-
-        form.innerHTML = `<p style="font-weight:600; color:var(--color-navy);">
-            Thanks, ${name}! We'll get back to you shortly.
-        </p>`;
-    });
-}
 
 /* Run everything */
 highlightCurrentPage();
 initNavbarShadow();
 initMobileMenu();
-initContactForm();
+

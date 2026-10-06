@@ -358,6 +358,7 @@ footer {
 .about-photo {
     width: 500px;
     height: auto;
+
     display: block;
     margin: 0 auto;
 }
